@@ -10,7 +10,6 @@ export class TeamsComponent implements OnInit {
   constructor(public teamsService: TeamsService) {}
 
   teams: Team[] = [];
-
   loading = true;
 
   displayedColumns: string[] = ['id', 'name', 'city', 'country', 'actions'];

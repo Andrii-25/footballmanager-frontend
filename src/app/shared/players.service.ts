@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export interface Player {
   id: number;
@@ -11,16 +11,36 @@ export interface Player {
   careerStartDate: Date;
 }
 
+const baseUrl = 'http://localhost:8080/api/players';
+
 @Injectable({ providedIn: 'root' })
 export default class PlayersService {
-  public players: Player[] = [];
-
   constructor(private http: HttpClient) {}
 
-  fetchPlayers(): Observable<Player[]> {
-    return this.http
-      .get<Player[]>('http://localhost:8080/api/players')
-      .pipe(delay(500))
-      .pipe(tap((players) => (this.players = players)));
+  getAll(): Observable<Player[]> {
+    return this.http.get<Player[]>(baseUrl);
+  }
+
+  get(id: any): Observable<Player> {
+    return this.http.get<Player>(`${baseUrl}/${id}`);
+  }
+
+  create(data: any): Observable<any> {
+    return this.http.post(baseUrl, data);
+  }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
+  }
+
+  transfer(playerId: any, teamId: any, data = null): Observable<any> {
+    return this.http.post(
+      `${baseUrl}?playerId=${playerId}&teamId=${teamId}`,
+      data
+    );
   }
 }

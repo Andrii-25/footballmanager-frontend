@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import PlayersService from '../shared/players.service';
+import PlayersService, { Player } from '../shared/players.service';
 
 @Component({
   selector: 'app-players',
@@ -10,6 +10,7 @@ export class PlayersComponent implements OnInit {
   constructor(public playersService: PlayersService) {}
 
   public loading = true;
+  public players: Player[] = [];
 
   displayedColumns: string[] = [
     'id',
@@ -21,8 +22,16 @@ export class PlayersComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.playersService.fetchPlayers().subscribe(() => {
-      this.loading = false;
+    this.retrievePlayers();
+  }
+
+  retrievePlayers(): void {
+    this.playersService.getAll().subscribe({
+      next: (data) => {
+        this.players = data;
+        this.loading = false;
+      },
+      error: (e) => console.error(e),
     });
   }
 }
