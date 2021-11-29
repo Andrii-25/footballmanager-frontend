@@ -12,16 +12,29 @@ export interface Team {
   players: object;
 }
 
+const baseUrl = 'http://localhost:8080/api/teams';
+
 @Injectable({ providedIn: 'root' })
 export default class TeamsService {
-  public teams: Team[] = [];
-
   constructor(private http: HttpClient) {}
 
-  fetchTeams(): Observable<Team[]> {
-    return this.http
-      .get<Team[]>('http://localhost:8080/api/teams')
-      .pipe(delay(500))
-      .pipe(tap((teams) => (this.teams = teams)));
+  getAll(): Observable<Team[]> {
+    return this.http.get<Team[]>(baseUrl);
+  }
+
+  get(id: any): Observable<Team> {
+    return this.http.get<Team>(`${baseUrl}/${id}`);
+  }
+
+  create(data: any): Observable<any> {
+    return this.http.post(baseUrl, data);
+  }
+
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 }

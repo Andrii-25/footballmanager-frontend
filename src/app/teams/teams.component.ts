@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import TeamsService from '../shared/teams.service';
+import TeamsService, { Team } from '../shared/teams.service';
 
 @Component({
   selector: 'app-teams',
@@ -9,13 +9,23 @@ import TeamsService from '../shared/teams.service';
 export class TeamsComponent implements OnInit {
   constructor(public teamsService: TeamsService) {}
 
-  public loading = true;
+  teams: Team[] = [];
+
+  loading = true;
 
   displayedColumns: string[] = ['id', 'name', 'city', 'country', 'actions'];
 
   ngOnInit(): void {
-    this.teamsService.fetchTeams().subscribe(() => {
-      this.loading = false;
+    this.retrieveTeams();
+  }
+
+  retrieveTeams(): void {
+    this.teamsService.getAll().subscribe({
+      next: (data) => {
+        this.teams = data;
+        this.loading = false;
+      },
+      error: (e) => console.error(e),
     });
   }
 }
