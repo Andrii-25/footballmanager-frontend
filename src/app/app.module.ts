@@ -13,9 +13,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PlayersComponent } from './players/players.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [AppComponent, ToolbarComponent, TeamsComponent],
+  declarations: [
+    AppComponent,
+    ToolbarComponent,
+    TeamsComponent,
+    PlayersComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatPaginatorModule,
     MatButtonModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
