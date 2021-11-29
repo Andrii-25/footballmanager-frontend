@@ -27,4 +27,8 @@ export class TeamsComponent implements OnInit {
       error: (e) => console.error(e),
     });
   }
+
+  deleteTeam(id: number): void {
+    this.teamsService.delete(id).subscribe(() => window.location.reload());
+  }
 }
