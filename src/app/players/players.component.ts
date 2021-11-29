@@ -34,4 +34,8 @@ export class PlayersComponent implements OnInit {
       error: (e) => console.error(e),
     });
   }
+
+  deletePlayer(id: number): void {
+    this.playersService.delete(id).subscribe(() => window.location.reload());
+  }
 }

@@ -33,7 +33,8 @@ export default class PlayersService {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  delete(id: any): Observable<any> {
+  delete(id: number): Observable<any> {
+    console.log(id);
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
