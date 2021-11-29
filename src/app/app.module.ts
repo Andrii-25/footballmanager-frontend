@@ -10,11 +10,13 @@ import { MatTableModule } from '@angular/material/table';
 import { TeamsComponent } from './teams/teams.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatButtonModule } from '@angular/material/button';
 
 import { HttpClientModule } from '@angular/common/http';
 import { PlayersComponent } from './players/players.component';
 import { RouterModule } from '@angular/router';
+import { TeamFormComponent } from './team-form/team-form.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { RouterModule } from '@angular/router';
     ToolbarComponent,
     TeamsComponent,
     PlayersComponent,
+    TeamFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { RouterModule } from '@angular/router';
     MatPaginatorModule,
     MatButtonModule,
     RouterModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,14 +1,16 @@
 <mat-toolbar>
   <span>Football Manager</span>
   <span class="spacer"></span>
-  <button mat-button>
-    <a routerLink="/teams" routerLinkActive="active">Teams</a>
+  <button mat-stroked-button routerLink="teams" routerLinkActive="active">
+    Teams
   </button>
-  <button mat-button>
-    <a routerLink="/players" routerLinkActive="active">Players</a>
+  <button mat-stroked-button routerLink="players" routerLinkActive="active">
+    Players
   </button>
-  <button mat-stroked-button color="primary">Add team</button>
-  <button mat-stroked-button color="accent">Add player</button>
+  <button mat-stroked-button routerLink="add-team" routerLinkActive="active">
+    Add team
+  </button>
+  <button mat-stroked-button>Add player</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
