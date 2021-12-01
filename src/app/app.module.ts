@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { TransferFormComponent } from './components/transfer-form/transfer-form.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TransferFormComponent } from './components/transfer-form/transfer-form.
     PlayerFormComponent,
     TeamDetailsComponent,
     TransferFormComponent,
+    PlayerDetailsComponent,
   ],
   imports: [
     BrowserModule,

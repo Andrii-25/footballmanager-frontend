@@ -6,6 +6,7 @@ import { TeamFormComponent } from './components/team-form/team-form.component';
 import { PlayerFormComponent } from './components/player-form/player-form.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { TransferFormComponent } from './components/transfer-form/transfer-form.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
         path: 'edit-player/:id',
         component: PlayerFormComponent,
         data: { isEdit: true },
+      },
+      {
+        path: 'more/:id',
+        component: PlayerDetailsComponent,
       },
     ],
   },

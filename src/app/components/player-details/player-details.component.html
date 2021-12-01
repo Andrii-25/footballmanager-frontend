@@ -1,0 +1,25 @@
+<div class="wrapper" *ngIf="!isHide">
+  <button
+    mat-raised-button
+    color="accent"
+    style="float: right; margin-right: 20px"
+    (click)="backClicked()"
+  >
+    Back
+  </button>
+  <div class="container">
+    <p>{{ player.name + " " + player.surname }}</p>
+    <div class="strip" style="background-color: #f5f5f5">
+      <div class="column">Age:</div>
+      <div class="column">{{ player.age }}</div>
+    </div>
+    <div class="strip" style="background-color: #ffffff">
+      <div class="column">Career start date:</div>
+      <div class="column">{{ player.careerStartDate }}</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isHide"></div>
+
+<router-outlet></router-outlet>

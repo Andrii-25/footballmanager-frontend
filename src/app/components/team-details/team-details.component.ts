@@ -67,7 +67,8 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   backClicked() {
-    this._location.back();
+    this._location.go('/teams');
+    window.location.reload();
   }
 
   setHide() {
