@@ -1,29 +1,72 @@
 <div class="wrapper">
   <div class="form-container">
-    <h1>Add new team</h1>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Name..." />
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="Name..."
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="team.name"
+        required
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="City..." />
+      <mat-label>City</mat-label>
+      <input
+        matInput
+        placeholder="City..."
+        type="text"
+        id="city"
+        name="city"
+        [(ngModel)]="team.city"
+        required
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Country..." />
+      <mat-label>Country</mat-label>
+      <input
+        matInput
+        placeholder="Country..."
+        type="text"
+        id="country"
+        name="country"
+        [(ngModel)]="team.country"
+        required
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Transfer fee..." />
+      <mat-label>Transfer fee</mat-label>
+      <input
+        matInput
+        placeholder="Transfer fee..."
+        type="number"
+        id="transferFee"
+        name="transferFee"
+        [(ngModel)]="team.transferFee"
+        required
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Outline form field</mat-label>
-      <input matInput placeholder="Money balance..." />
+      <mat-label>Money balance</mat-label>
+      <input
+        matInput
+        placeholder="Money balance..."
+        type="number"
+        id="moneyBalance"
+        name="moneyBalance"
+        [(ngModel)]="team.moneyBalance"
+        required
+      />
     </mat-form-field>
     <div class="btn-container">
-      <button mat-flat-button color="accent"><a href="/teams">Cancel</a></button>
-      <button mat-flat-button color="primary">Submit</button>
+      <button mat-flat-button color="accent">
+        <a href="/teams">Cancel</a>
+      </button>
+      <button mat-flat-button color="primary" (click)="saveTeam()">
+        <a href="/teams">Submit</a>
+      </button>
     </div>
   </div>
 </div>

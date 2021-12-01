@@ -16,7 +16,6 @@ export class PlayerFormComponent implements OnInit {
   player: Player = {
     name: '',
     surname: '',
-    country: '',
     age: 0,
     careerStartDate: new Date(),
   };
@@ -54,7 +53,6 @@ export class PlayerFormComponent implements OnInit {
     this.teamService.getAll().subscribe({
       next: (data) => {
         this.options = data.map((t) => t.name);
-        console.log(this.options);
         this.loading = false;
       },
       error: (e) => console.error(e),
@@ -65,7 +63,6 @@ export class PlayerFormComponent implements OnInit {
     const data = {
       name: this.player.name,
       surname: this.player.surname,
-      country: this.player.country,
       age: this.player.age,
       careerStartDate: this.player.careerStartDate,
     };
@@ -82,7 +79,6 @@ export class PlayerFormComponent implements OnInit {
     this.player = {
       name: '',
       surname: '',
-      country: '',
       age: 0,
       careerStartDate: new Date(),
     };
