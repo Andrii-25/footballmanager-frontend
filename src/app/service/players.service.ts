@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Player {
-  id: number;
-  name: string;
-  surname: string;
-  country: string;
-  age: number;
-  careerStartDate: Date;
-}
+import { Player } from '../models/player.model';
 
 const baseUrl = 'http://localhost:8080/api/players';
 
@@ -25,8 +17,8 @@ export default class PlayersService {
     return this.http.get<Player>(`${baseUrl}/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+  create(data: any, teamName: string): Observable<any> {
+    return this.http.post(`${baseUrl}/new/${teamName}`, data);
   }
 
   update(id: any, data: any): Observable<any> {

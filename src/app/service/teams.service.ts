@@ -1,16 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Team {
-  id: number;
-  name: string;
-  city: string;
-  country: string;
-  moneyBalance: number;
-  transferFee: number;
-  players: object;
-}
+import { Team } from '../models/team.model';
 
 const baseUrl = 'http://localhost:8080/api/teams';
 

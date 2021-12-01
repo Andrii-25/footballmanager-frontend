@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="Name..."
+        type="text"
+        id="name"
+        required
+        [(ngModel)]="player.name"
+        name="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Surname</mat-label>
+      <input
+        matInput
+        placeholder="Surname..."
+        type="text"
+        id="surname"
+        required
+        [(ngModel)]="player.surname"
+        name="surname"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input
+        matInput
+        placeholder="Age..."
+        type="number"
+        id="age"
+        required
+        [(ngModel)]="player.age"
+        name="age"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Career start date</mat-label>
+      <input
+        matInput
+        placeholder="Career start date..."
+        type="date"
+        id="careerStartDate"
+        required
+        [(ngModel)]="player.careerStartDate"
+        name="careerStartDate"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Team</mat-label>
+      <input
+        matInput
+        placeholder="Pick one..."
+        type="text"
+        id="team"
+        name="team"
+        [(ngModel)]="teamName"
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+          >{{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="btn-container">
+      <button mat-flat-button color="accent">
+        <a href="/players">Cancel</a>
+      </button>
+      <button mat-flat-button color="primary" (click)="savePlayer()">
+        <a href="/players">Submit</a>
+      </button>
+    </div>
+  </div>
+</div>
