@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { TeamFormComponent } from './team-form/team-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PlayerFormComponent } from './player-form/player-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     TeamsComponent,
     PlayersComponent,
     TeamFormComponent,
+    PlayerFormComponent,
   ],
   imports: [
     BrowserModule,
