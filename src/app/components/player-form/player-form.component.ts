@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Player } from 'src/app/models/player.model';
@@ -26,19 +27,38 @@ export class PlayerFormComponent implements OnInit {
   loading = true;
   options: string[] = [];
   teamName: string = '';
+  id = '';
+  isEdit = false;
 
   constructor(
     private playerService: PlayersService,
-    private teamService: TeamsService
+    private teamService: TeamsService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.data.subscribe({
+      next: (v) => (this.isEdit = v['isEdit']),
+    });
+    if (this.isEdit === true) {
+      this.id = this.route.snapshot.paramMap.get('id') || '';
+      this.getPlayer(this.id);
+    }
     this.retrieveTeams();
     this.newPlayer();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
+  }
+
+  private getPlayer(id: any) {
+    this.playerService.get(id).subscribe({
+      next: (res) => {
+        this.player = res;
+      },
+      error: (e) => console.log(e),
+    });
   }
 
   private _filter(value: string): string[] {
@@ -67,12 +87,21 @@ export class PlayerFormComponent implements OnInit {
       careerStartDate: this.player.careerStartDate,
     };
 
-    this.playerService.create(data, this.teamName).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (e) => console.error(e),
-    });
+    if (this.isEdit) {
+      this.playerService.update(this.id, data).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e),
+      });
+    } else {
+      this.playerService.create(data, this.teamName).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e),
+      });
+    }
   }
 
   newPlayer(): void {

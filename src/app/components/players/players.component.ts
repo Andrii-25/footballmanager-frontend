@@ -12,6 +12,7 @@ export class PlayersComponent implements OnInit {
 
   public loading = true;
   public players: Player[] = [];
+  public isHide = false;
 
   displayedColumns: string[] = [
     'id',
@@ -38,5 +39,9 @@ export class PlayersComponent implements OnInit {
 
   deletePlayer(id: number): void {
     this.playersService.delete(id).subscribe(() => window.location.reload());
+  }
+
+  setHide(): void {
+    this.isHide = true;
   }
 }
