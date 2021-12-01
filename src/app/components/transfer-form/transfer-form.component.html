@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="form-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Team</mat-label>
+      <input
+        matInput
+        placeholder="Pick one..."
+        type="text"
+        id="team"
+        name="team"
+        [(ngModel)]="team"
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+          >{{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <div class="btn-container">
+      <button mat-flat-button color="accent">
+        <a href="/teams">Cancel</a>
+      </button>
+      <button mat-flat-button color="primary" (click)="transfer()">
+        <a href="/teams">Submit</a>
+      </button>
+    </div>
+  </div>
+</div>

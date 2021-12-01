@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Player } from '../models/player.model';
-import { Team } from '../models/team.model';
-import PlayersService from '../service/players.service';
-import TeamsService from '../service/teams.service';
+import { Player } from '../../models/player.model';
+import { Team } from '../../models/team.model';
+import PlayersService from '../../service/players.service';
+import TeamsService from '../../service/teams.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -23,6 +23,7 @@ export class TeamDetailsComponent implements OnInit {
   id = '';
   players: Player[] = [];
   loading = true;
+  isHide = false;
 
   displayedColumns: string[] = [
     'id',
@@ -67,5 +68,9 @@ export class TeamDetailsComponent implements OnInit {
 
   backClicked() {
     this._location.back();
+  }
+
+  setHide() {
+    this.isHide = true;
   }
 }

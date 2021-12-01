@@ -34,9 +34,9 @@ export default class PlayersService {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
-  transfer(playerId: any, teamId: any, data = null): Observable<any> {
+  transfer(playerId: any, team: any, data = null): Observable<any> {
     return this.http.post(
-      `${baseUrl}?playerId=${playerId}&teamId=${teamId}`,
+      `${baseUrl}?playerId=${playerId}&team=${team}`,
       data
     );
   }

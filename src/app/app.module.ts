@@ -19,7 +19,8 @@ import { PlayerFormComponent } from './components/player-form/player-form.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { TeamDetailsComponent } from './team-details/team-details.component';
+import { TeamDetailsComponent } from './components/team-details/team-details.component';
+import { TransferFormComponent } from './components/transfer-form/transfer-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
     TeamFormComponent,
     PlayerFormComponent,
     TeamDetailsComponent,
+    TransferFormComponent,
   ],
   imports: [
     BrowserModule,
