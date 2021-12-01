@@ -12,6 +12,7 @@ export class TeamsComponent implements OnInit {
 
   teams: Team[] = [];
   loading = true;
+  isHide = false;
 
   displayedColumns: string[] = ['id', 'name', 'city', 'country', 'actions'];
 
@@ -31,5 +32,9 @@ export class TeamsComponent implements OnInit {
 
   deleteTeam(id: number): void {
     this.teamsService.delete(id).subscribe(() => window.location.reload());
+  }
+
+  setHide(): void {
+    this.isHide = true;
   }
 }

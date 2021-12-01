@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/models/team.model';
 import TeamsService from 'src/app/service/teams.service';
 
@@ -16,10 +17,32 @@ export class TeamFormComponent implements OnInit {
     moneyBalance: 0,
   };
 
-  constructor(private teamService: TeamsService) {}
+  id = '';
+  isEdit = false;
+
+  constructor(
+    private teamService: TeamsService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.data.subscribe({
+      next: (v) => (this.isEdit = v['isEdit']),
+    });
+    if (this.isEdit === true) {
+      this.id = this.route.snapshot.paramMap.get('id') || '';
+      this.getTeam(this.id);
+    }
     this.newTeam();
+  }
+
+  private getTeam(id: any) {
+    this.teamService.get(id).subscribe({
+      next: (res) => {
+        this.team = res;
+      },
+      error: (e) => console.log(e),
+    });
   }
 
   saveTeam(): void {
@@ -31,12 +54,21 @@ export class TeamFormComponent implements OnInit {
       moneyBalance: this.team.moneyBalance,
     };
 
-    this.teamService.create(data).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (e) => console.error(e),
-    });
+    if (this.isEdit) {
+      this.teamService.update(this.id, data).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e),
+      });
+    } else {
+      this.teamService.create(data).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e),
+      });
+    }
   }
 
   newTeam(): void {
