@@ -4,6 +4,7 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { PlayersComponent } from './components/players/players.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import { PlayerFormComponent } from './components/player-form/player-form.component';
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
         path: 'edit-team/:id',
         component: TeamFormComponent,
         data: { isEdit: true },
+      },
+      {
+        path: 'more/:id',
+        component: TeamDetailsComponent,
       },
     ],
   },

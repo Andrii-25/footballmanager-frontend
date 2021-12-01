@@ -13,6 +13,10 @@ export default class PlayersService {
     return this.http.get<Player[]>(baseUrl);
   }
 
+  getAllByTeamId(id: any): Observable<Player[]> {
+    return this.http.get<Player[]>(`${baseUrl}/team/${id}`);
+  }
+
   get(id: any): Observable<Player> {
     return this.http.get<Player>(`${baseUrl}/${id}`);
   }

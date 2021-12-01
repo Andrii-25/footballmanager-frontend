@@ -1,0 +1,42 @@
+.wrapper {
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding-top: 50px;
+  height: auto;
+  p {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+}
+
+.container {
+  width: 100%;
+  margin-bottom: 50px;
+  p {
+    margin-top: 50px;
+    font-size: 35px;
+  }
+  table {
+    text-align: start;
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+
+.strip {
+  width: 100%;
+  height: 70px;
+  display: flex;
+}
+
+.column {
+  margin: none;
+  width: 50%;
+  height: 70px;
+  flex: 1;
+  font-size: 30px;
+  font-weight: bolder;
+  padding-top: 25px;
+}

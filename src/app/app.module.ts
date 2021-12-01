@@ -19,6 +19,7 @@ import { PlayerFormComponent } from './components/player-form/player-form.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TeamDetailsComponent } from './team-details/team-details.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     PlayersComponent,
     TeamFormComponent,
     PlayerFormComponent,
+    TeamDetailsComponent,
   ],
   imports: [
     BrowserModule,
