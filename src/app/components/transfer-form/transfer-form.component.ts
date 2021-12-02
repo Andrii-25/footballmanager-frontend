@@ -5,6 +5,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { Team } from 'src/app/models/team.model';
 import PlayersService from 'src/app/service/players.service';
 import TeamsService from 'src/app/service/teams.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-transfer-form',
@@ -24,7 +25,8 @@ export class TransferFormComponent implements OnInit {
   constructor(
     private playerService: PlayersService,
     private teamService: TeamsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -60,5 +62,12 @@ export class TransferFormComponent implements OnInit {
       },
       error: (e) => console.error(e),
     });
+    this._location.go('/teams');
+    window.location.reload();
+  }
+
+  backClicked() {
+    this._location.go('/teams');
+    window.location.reload();
   }
 }

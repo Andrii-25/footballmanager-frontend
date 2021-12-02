@@ -21,11 +21,11 @@
       </mat-autocomplete>
     </mat-form-field>
     <div class="btn-container">
-      <button mat-flat-button color="accent">
-        <a href="/teams">Cancel</a>
+      <button mat-flat-button color="accent" (click)="backClicked()">
+        Cancel
       </button>
       <button mat-flat-button color="primary" (click)="transfer()">
-        <a href="/teams">Submit</a>
+        Submit
       </button>
     </div>
   </div>

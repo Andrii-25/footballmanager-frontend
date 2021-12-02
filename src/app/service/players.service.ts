@@ -36,7 +36,7 @@ export default class PlayersService {
 
   transfer(playerId: any, team: any, data = null): Observable<any> {
     return this.http.post(
-      `${baseUrl}?playerId=${playerId}&team=${team}`,
+      `${baseUrl}/transfer?playerId=${playerId}&team=${team}`,
       data
     );
   }

@@ -8,6 +8,8 @@
         type="text"
         id="name"
         required
+        minlength="3"
+        maxlength="30"
         [(ngModel)]="player.name"
         name="name"
       />
@@ -20,6 +22,8 @@
         type="text"
         id="surname"
         required
+        minlength="3"
+        maxlength="30"
         [(ngModel)]="player.surname"
         name="surname"
       />
