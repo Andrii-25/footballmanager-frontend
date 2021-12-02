@@ -31,7 +31,9 @@ export class TeamsComponent implements OnInit {
   }
 
   deleteTeam(id: number): void {
-    this.teamsService.delete(id).subscribe(() => window.location.reload());
+    if (window.confirm('Do you really want to delete it?')) {
+      this.teamsService.delete(id).subscribe(() => window.location.reload());
+    }
   }
 
   setHide(): void {

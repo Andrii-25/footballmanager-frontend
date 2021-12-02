@@ -38,7 +38,9 @@ export class PlayersComponent implements OnInit {
   }
 
   deletePlayer(id: number): void {
-    this.playersService.delete(id).subscribe(() => window.location.reload());
+    if (window.confirm('Do you really want to delete it?')) {
+      this.playersService.delete(id).subscribe(() => window.location.reload());
+    }
   }
 
   setHide(): void {
