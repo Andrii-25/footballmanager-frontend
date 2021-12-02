@@ -2,41 +2,42 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Player } from '../models/player.model';
-
-const baseUrl = 'http://localhost:8080/api/players';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export default class PlayersService {
+  url = environment.baseUrl;
+
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Player[]> {
-    return this.http.get<Player[]>(baseUrl);
+    return this.http.get<Player[]>(`${this.url}players`);
   }
 
   getAllByTeamId(id: any): Observable<Player[]> {
-    return this.http.get<Player[]>(`${baseUrl}/team/${id}`);
+    return this.http.get<Player[]>(`${this.url}players/team/${id}`);
   }
 
   get(id: any): Observable<Player> {
-    return this.http.get<Player>(`${baseUrl}/${id}`);
+    return this.http.get<Player>(`${this.url}players/${id}`);
   }
 
   create(data: any, teamName: string): Observable<any> {
-    return this.http.post(`${baseUrl}/new/${teamName}`, data);
+    return this.http.post(`${this.url}players/new/${teamName}`, data);
   }
 
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.put(`${this.url}players/${id}`, data);
   }
 
   delete(id: number): Observable<any> {
     console.log(id);
-    return this.http.delete(`${baseUrl}/${id}`);
+    return this.http.delete(`${this.url}players/${id}`);
   }
 
   transfer(playerId: any, team: any, data = null): Observable<any> {
     return this.http.post(
-      `${baseUrl}/transfer?playerId=${playerId}&team=${team}`,
+      `${this.url}players/transfer?playerId=${playerId}&team=${team}`,
       data
     );
   }
