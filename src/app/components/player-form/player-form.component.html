@@ -73,11 +73,11 @@
       </mat-autocomplete>
     </mat-form-field>
     <div class="btn-container">
-      <button mat-flat-button color="accent">
-        <a href="/players">Cancel</a>
+      <button mat-flat-button color="accent" (click)="backClicked()">
+        Cancel
       </button>
       <button mat-flat-button color="primary" (click)="savePlayer()">
-        <a href="/players">Submit</a>
+        Submit
       </button>
     </div>
   </div>

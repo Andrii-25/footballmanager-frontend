@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Team } from 'src/app/models/team.model';
 import TeamsService from 'src/app/service/teams.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-team-form',
@@ -22,7 +23,8 @@ export class TeamFormComponent implements OnInit {
 
   constructor(
     private teamService: TeamsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +71,8 @@ export class TeamFormComponent implements OnInit {
         error: (e) => console.error(e),
       });
     }
+    this._location.go('/');
+    window.location.reload();
   }
 
   newTeam(): void {
@@ -79,5 +83,10 @@ export class TeamFormComponent implements OnInit {
       transferFee: 0,
       moneyBalance: 0,
     };
+  }
+
+  backClicked() {
+    this._location.go('/');
+    window.location.reload();
   }
 }

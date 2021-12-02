@@ -7,6 +7,7 @@ import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
 import TeamsService from 'src/app/service/teams.service';
 import PlayersService from '../../service/players.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-player-form',
@@ -33,7 +34,8 @@ export class PlayerFormComponent implements OnInit {
   constructor(
     private playerService: PlayersService,
     private teamService: TeamsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -102,6 +104,8 @@ export class PlayerFormComponent implements OnInit {
         error: (e) => console.error(e),
       });
     }
+    this._location.go('/players');
+    window.location.reload();
   }
 
   newPlayer(): void {
@@ -111,5 +115,10 @@ export class PlayerFormComponent implements OnInit {
       age: 0,
       careerStartDate: new Date(),
     };
+  }
+
+  backClicked() {
+    this._location.go('/players');
+    window.location.reload();
   }
 }

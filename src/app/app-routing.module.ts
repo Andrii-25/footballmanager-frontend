@@ -10,7 +10,7 @@ import { PlayerDetailsComponent } from './components/player-details/player-detai
 
 const routes: Routes = [
   {
-    path: 'teams',
+    path: '',
     component: TeamsComponent,
     children: [
       {

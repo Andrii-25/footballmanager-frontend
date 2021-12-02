@@ -67,7 +67,7 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   backClicked() {
-    this._location.go('/teams');
+    this._location.go('/');
     window.location.reload();
   }
 
